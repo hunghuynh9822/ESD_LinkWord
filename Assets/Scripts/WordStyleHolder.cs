@@ -7,7 +7,8 @@ using UnityEngine.UI;
 public class WordStyle
 {
     public string word;
-    public Image BoxImage;
+    public Sprite BoxImage;
+    public Color32 Color;
 }
 public class WordStyleHolder : MonoBehaviour {
 

@@ -526,9 +526,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WordStyles:
   - word: 
-    BoxImage: {fileID: 0}
-  - word: A
-    BoxImage: {fileID: 0}
+    BoxImage: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+    Color:
+      serializedVersion: 2
+      rgba: 2639169193
+  - word: 
+    BoxImage: {fileID: 21300000, guid: 27b8629855c9d8b408f4aa478a23f3c5, type: 3}
+    Color:
+      serializedVersion: 2
+      rgba: 4294967295
 --- !u!114 &582332667
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -540,9 +546,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0098120c64f8bdb4b9f96e90f4176632, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  emptyBoxPreference: {fileID: 1733454832614050, guid: dc6bb5f037cace447a01dc5c8a57cdfa,
-    type: 2}
-  wordBoxPreference: {fileID: 1318067015841486, guid: 5395b34bad84e9f4fac2b1c0bf3793d2,
+  boxPreference: {fileID: 1336236011744060, guid: 2ba43b0bec9298c4f960bffd3b60de05,
     type: 2}
   panel: {fileID: 1179599636}
 --- !u!114 &582332668

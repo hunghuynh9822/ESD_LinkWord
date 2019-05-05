@@ -16,13 +16,16 @@ public class Box : MonoBehaviour {
     private void Awake()
     {
         TitleText = GetComponentInChildren<Text>();
-        ImageText = transform.Find("BoxCell").GetComponent<Image>();
+        ImageText = gameObject.AddComponent<Image>();
+        Debug.Log(WordStyleHolder.Instance.WordStyles[0].Color);
+        //ImageText.color = WordStyleHolder.Instance.WordStyles[0].Color;
     }
 
     void ApplyStyleFromHolder(int index, string word)
     {
         TitleText.text = word;
-        ImageText = WordStyleHolder.Instance.WordStyles[index].BoxImage;
+        ImageText.sprite = WordStyleHolder.Instance.WordStyles[index].BoxImage;
+        ImageText.color = WordStyleHolder.Instance.WordStyles[index].Color;
     }
 
 
