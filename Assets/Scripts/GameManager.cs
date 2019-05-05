@@ -25,12 +25,12 @@ public class GameManager : MonoBehaviour {
         //{
         //    box.ApplyStyle("AB");
         //}
-        Debug.Log("SelectedWordBoxs : "+ SelectedWordBoxes.Count);
-        foreach(GameObject gb in SelectedWordBoxes)
-        {
-            Debug.Log(gb.transform.position.x);
-            Text text = gb.GetComponentInChildren<Text>();
-            Debug.Log(text.text);
-        }
+        //Debug.Log("SelectedWordBoxs : "+ SelectedWordBoxes.Count);
+        //foreach(GameObject gb in SelectedWordBoxes)
+        //{
+        //    Debug.Log(gb.transform.position.x);
+        //    Text text = gb.GetComponentInChildren<Text>();
+        //    Debug.Log(text.text);
+        //}
 	}
 }

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class DrawLine : MonoBehaviour {
 
+    public static DrawLine Instance;
     public Color c1 = Color.yellow;
     public Color c2 = Color.red;
 
@@ -11,6 +12,11 @@ public class DrawLine : MonoBehaviour {
     private LineRenderer lineRenderer;
     private int i = 0;
     public Transform panel;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
 
     void Start()
@@ -34,18 +40,33 @@ public class DrawLine : MonoBehaviour {
 
             if (touch.phase == TouchPhase.Moved)
             {
-                lineRenderer.SetVertexCount(i + 1);
-                Vector3 mPosition = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 15);
-                lineRenderer.SetPosition(i, Camera.main.ScreenToWorldPoint(mPosition));
-                i++;
+                if(i != 0 && i < BoxSpawner.WordBoxCount)
+                {
+                    lineRenderer.SetVertexCount(i + 1);
+                    Vector3 mPosition = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10);
+                    lineRenderer.SetPosition(i, Camera.main.ScreenToWorldPoint(mPosition));
+                }
             }
 
-            if (touch.phase == TouchPhase.Ended)
-            {
-                /* Remove Line */
-                lineRenderer.SetVertexCount(0);
-                i = 0;
-            }
+            //if (touch.phase == TouchPhase.Ended)
+            //{
+            //    /* Remove Line */
+            //    lineRenderer.SetVertexCount(0);
+            //    i = 0;
+            //}
         }
+    }
+
+    public void setPositonLine(Vector2 position)
+    {
+        lineRenderer.SetVertexCount(i + 1);
+        lineRenderer.SetPosition(i, Camera.main.ScreenToWorldPoint(new Vector3(position.x,position.y,10)));
+        i++;
+    }
+
+    public void resetLine()
+    {
+        lineRenderer.SetVertexCount(0);
+        i = 0;
     }
 }

@@ -12,10 +12,13 @@ public class BoxSpawner : MonoBehaviour {
     private GameObject wordBoxPreference;
     public Transform panel;
 
+    public static int WordBoxCount = 0;
+
     // Use this for initialization
     void Start () {
         //CreateEmptyBox();
         string[] words = { "A","B","C"};
+        WordBoxCount = words.Length;
         MapPosition mapPosition = MapPosition.getMapPosition(words.Length);
         if(mapPosition != null)
         {
