@@ -14,7 +14,6 @@ public class CheckClicks : MonoBehaviour {
     void Awake()
     {
         // Get both of the components we need to do this
-        Debug.Log(drawLine);
         this.raycaster = GetComponent<GraphicRaycaster>();
     }
 
@@ -76,7 +75,7 @@ public class CheckClicks : MonoBehaviour {
                             GameManager.SelectedWordBoxes.Add(result.gameObject);
                             drawLine.setPositonLine(result.gameObject.transform.position);
                             Box box = result.gameObject.GetComponent<Box>();
-                            Debug.Log(box.getWord());
+                            //Debug.Log(box.getWord());
                         }
                     }
 
@@ -84,6 +83,7 @@ public class CheckClicks : MonoBehaviour {
             }
             if (touch.phase == TouchPhase.Ended)
             {
+                GameManager.Instance.checkAnswer();
                 /* Remove Line */
                 GameManager.SelectedWordBoxes.Clear();
                 drawLine.resetLine();

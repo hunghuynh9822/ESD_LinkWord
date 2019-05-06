@@ -17,7 +17,6 @@ public class Box : MonoBehaviour {
     {
         TitleText = GetComponentInChildren<Text>();
         ImageText = gameObject.AddComponent<Image>();
-        Debug.Log(WordStyleHolder.Instance.WordStyles[0].Color);
         //ImageText.color = WordStyleHolder.Instance.WordStyles[0].Color;
     }
 

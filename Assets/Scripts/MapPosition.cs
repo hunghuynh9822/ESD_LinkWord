@@ -16,13 +16,50 @@ namespace Assets.Scripts
     public class MapPosition
     {
         public int count;
+        public const int distance = 45;
+        public const int yDistance = 145;
         public Vector2[] positions;
         public MapPosition(int count, Vector2[] positions)
         {
             this.count = count;
             this.positions = positions;
         }
-        public static MapPosition getMapPosition(int count)
+        public static MapPosition getMapEmptyBoxPosition(int count,int index)
+        {
+            switch (count)
+            {
+                case 2:
+                    {
+                        return new MapPosition(count, new Vector2[]
+                        {
+                            Position.getPosition(-30,yDistance - distance*index),
+                            Position.getPosition(30,yDistance - distance*index)
+                        });
+                    }
+                case 3:
+                    {
+                        return new MapPosition(count, new Vector2[]
+                        {
+                            Position.getPosition(-50, yDistance - distance*index),
+                            Position.getPosition(0, yDistance - distance*index),
+                            Position.getPosition(50, yDistance - distance*index)
+                        });
+                    }
+                case 4:
+                    {
+                        return new MapPosition(count, new Vector2[]
+                        {
+                            Position.getPosition(-75, yDistance - distance*index),
+                            Position.getPosition(-25, yDistance - distance*index),
+                            Position.getPosition(25, yDistance - distance*index),
+                            Position.getPosition(75, yDistance - distance*index)
+                        });
+                    }
+                default:
+                    return null;
+            }
+        }
+        public static MapPosition getMapWordBoxPosition(int count)
         {
             switch (count)
             {
@@ -41,6 +78,16 @@ namespace Assets.Scripts
                             Position.getPosition(-75, -110),
                             Position.getPosition(0, -30),
                             Position.getPosition(75, -110)
+                        });
+                    }
+                case 4:
+                    {
+                        return new MapPosition(count, new Vector2[]
+                        {
+                            Position.getPosition(-60, -20),
+                            Position.getPosition(60, -20),
+                            Position.getPosition(-60, -120),
+                            Position.getPosition(60, -120)
                         });
                     }
                 default:
