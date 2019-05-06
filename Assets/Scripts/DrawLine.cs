@@ -40,20 +40,13 @@ public class DrawLine : MonoBehaviour {
 
             if (touch.phase == TouchPhase.Moved)
             {
-                if(i != 0 && i < BoxSpawner.WordBoxCount)
+                if(i != 0) // && i < BoxSpawner.WordBoxCount
                 {
                     lineRenderer.SetVertexCount(i + 1);
                     Vector3 mPosition = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10);
                     lineRenderer.SetPosition(i, Camera.main.ScreenToWorldPoint(mPosition));
                 }
             }
-
-            //if (touch.phase == TouchPhase.Ended)
-            //{
-            //    /* Remove Line */
-            //    lineRenderer.SetVertexCount(0);
-            //    i = 0;
-            //}
         }
     }
 

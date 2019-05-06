@@ -61,18 +61,29 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Answer.cs" />
     <Compile Include="Assets\Scripts\Box.cs" />
     <Compile Include="Assets\Scripts\BoxSpawner.cs" />
     <Compile Include="Assets\Scripts\CheckClicks.cs" />
     <Compile Include="Assets\Scripts\DrawLine.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\GetTxt.cs" />
+    <Compile Include="Assets\Scripts\LineEmptyBoxAnswer.cs" />
     <Compile Include="Assets\Scripts\MapPosition.cs" />
     <Compile Include="Assets\Scripts\Nhap\DrawLine2.cs" />
     <Compile Include="Assets\Scripts\Nhap\RaycastHitMouse.cs" />
     <Compile Include="Assets\Scripts\Nhap\Windown_Graph.cs" />
     <Compile Include="Assets\Scripts\WordStyleHolder.cs" />
-    <None Include="Assets\Scripts\Level1.txt" />
+    <None Include="Assets\Scripts\FileText\Level7.txt" />
+    <None Include="Assets\Scripts\FileText\Level1.txt" />
+    <None Include="Assets\Scripts\FileText\Level10.txt" />
+    <None Include="Assets\Scripts\FileText\Level2.txt" />
+    <None Include="Assets\Scripts\FileText\Level8.txt" />
+    <None Include="Assets\Scripts\FileText\Level4.txt" />
+    <None Include="Assets\Scripts\FileText\Level9.txt" />
+    <None Include="Assets\Scripts\FileText\Level6.txt" />
+    <None Include="Assets\Scripts\FileText\Level3.txt" />
+    <None Include="Assets\Scripts\FileText\Level5.txt" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>D:/0.CODE/18_19/Unity/Demo/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>

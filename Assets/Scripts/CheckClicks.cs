@@ -20,33 +20,6 @@ public class CheckClicks : MonoBehaviour {
     void Update()
     {
         selectWorldBox();
-        ////Check if the left Mouse button is clicked
-        //if (Input.GetKeyDown(KeyCode.Mouse0))
-        //{
-        //    //Set up the new Pointer Event
-        //    PointerEventData pointerData = new PointerEventData(EventSystem.current);
-        //    List<RaycastResult> results = new List<RaycastResult>();
-
-        //    //Raycast using the Graphics Raycaster and mouse click position
-        //    pointerData.position = Input.mousePosition;
-        //    this.raycaster.Raycast(pointerData, results);
-
-        //    //For every result returned, output the name of the GameObject on the Canvas hit by the Ray
-        //    foreach (RaycastResult result in results)
-        //    {
-        //        if(result.gameObject.tag == "cell")
-        //        {
-        //            Debug.Log("Hit " + result.gameObject.name);
-        //            if (!GameManager.SelectedWordBoxes.Contains(result.gameObject))
-        //            {
-        //                GameManager.SelectedWordBoxes.Add(result.gameObject);
-        //            }
-        //            Box box = result.gameObject.GetComponent<Box>();
-        //            Debug.Log(box.getWord());
-        //        }
-                
-        //    }
-        //}
     }
 
     void selectWorldBox()
@@ -68,14 +41,16 @@ public class CheckClicks : MonoBehaviour {
                 //For every result returned, output the name of the GameObject on the Canvas hit by the Ray
                 foreach (RaycastResult result in results)
                 {
-                    if (result.gameObject.tag == "cell")
+                    //Check if it is wordBox
+                    if (result.gameObject.tag == "wordBox")
                     {
-                        if (!GameManager.SelectedWordBoxes.Contains(result.gameObject))
+                        Box box = result.gameObject.GetComponent<Box>();
+                        //If it not contain in SelectedBox in GameManager
+                        if (!GameManager.Instance.SelectedWordBoxes.Contains(result.gameObject))
                         {
-                            GameManager.SelectedWordBoxes.Add(result.gameObject);
+                            GameManager.Instance.SelectedWordBoxes.Add(result.gameObject);
+                            //Connect with previous box
                             drawLine.setPositonLine(result.gameObject.transform.position);
-                            Box box = result.gameObject.GetComponent<Box>();
-                            //Debug.Log(box.getWord());
                         }
                     }
 
@@ -84,8 +59,8 @@ public class CheckClicks : MonoBehaviour {
             if (touch.phase == TouchPhase.Ended)
             {
                 GameManager.Instance.checkAnswer();
-                /* Remove Line */
-                GameManager.SelectedWordBoxes.Clear();
+                /* Remove Line - Reset SelectedBoxes*/
+                GameManager.Instance.SelectedWordBoxes.Clear();
                 drawLine.resetLine();
             }
         }

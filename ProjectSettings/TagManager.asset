@@ -6,6 +6,8 @@ TagManager:
   tags:
   - cell
   - word
+  - emptyBox
+  - wordBox
   layers:
   - Default
   - TransparentFX

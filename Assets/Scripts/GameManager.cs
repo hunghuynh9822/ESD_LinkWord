@@ -1,15 +1,17 @@
-﻿using System.Collections;
+﻿using Assets.Scripts;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour {
 
-    public static List<GameObject> SelectedWordBoxes;
-    public static List<LineEmptyBoxAnswer> lineEmptyBoxAnswers;
-    public static Answer[] answers;
-    public static string answerPlayer;
-    int i = 0;
+    public List<GameObject> SelectedWordBoxes;
+    public List<LineEmptyBoxAnswer> lineEmptyBoxAnswers;
+    public Answer[] answers;
+    public string answerPlayer;
+
+    public static int currentLevel = 0;
 
     public static GameManager Instance;
 
@@ -17,46 +19,88 @@ public class GameManager : MonoBehaviour {
     {
         SelectedWordBoxes = new List<GameObject>();
         lineEmptyBoxAnswers = new List<LineEmptyBoxAnswer>();
-        
+        //Singleton
         Instance = this;
+        //Answer of player
         answerPlayer = "";
+        //Start level
+        currentLevel = 1;
     }
 
     // Use this for initialization
     void Start () {
-        answers = GetTxt.Instance.getAnswer();
+        GetTxt.Instance.setLevel(currentLevel);
+        //Get answer from txt
+        answers = GetTxt.Instance.getAnswers();
     }
 	
 	// Update is called once per frame
 	void Update () {
-        //Box[] AllBoxes = GameObject.FindObjectsOfType<Box>();
-        //Debug.Log(AllBoxes.Length);
-        //foreach(Box box in AllBoxes)
+        //answerPlayer = "";
+        //if (SelectedWordBoxes != null)
         //{
-        //    box.ApplyStyle("AB");
+        //    foreach (GameObject gb in SelectedWordBoxes)
+        //    {
+        //        answerPlayer += gb.GetComponentInChildren<Text>().text;
+        //    }
         //}
-        //Debug.Log("SelectedWordBoxs : "+ SelectedWordBoxes.Count);
+        if (checkFinishLevel())
+        {
+            currentLevel++;
+            resetMap();
+        }
+    }
+
+    public bool checkFinishLevel()
+    {
+        foreach(LineEmptyBoxAnswer line in lineEmptyBoxAnswers)
+        {
+            if (!line.getChecked())
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public void catchAnswerPlayer()
+    {
         answerPlayer = "";
         if (SelectedWordBoxes != null)
         {
             foreach (GameObject gb in SelectedWordBoxes)
             {
-                //Debug.Log(gb.transform.position.x);
                 answerPlayer += gb.GetComponentInChildren<Text>().text;
-                //Debug.Log(text.text);
             }
-            //if (answerPlayer.Length == 3)
-            //{
-            //    Debug.Log("Chuoi da chon " + i + ": " + answerPlayer);
-            //    i++;
-            //}
         }
-        
+    }
+
+    public void resetMap()
+    {
+        GameObject[] wordBoxes = GameObject.FindGameObjectsWithTag("wordBox");
+        GameObject[] emptyBoxes = GameObject.FindGameObjectsWithTag("emptyBox");
+
+        foreach(GameObject gameObject in wordBoxes)
+        {
+            Destroy(gameObject);
+        }
+        foreach (GameObject gameObject in emptyBoxes)
+        {
+            Destroy(gameObject);
+        }
+
+        SelectedWordBoxes = new List<GameObject>();
+        lineEmptyBoxAnswers = new List<LineEmptyBoxAnswer>();
+
+        GetTxt.Instance.setLevel(currentLevel);
+        //Get answer from txt
+        answers = GetTxt.Instance.getAnswers();
     }
 
     public bool checkAnswer()
     {
-        for(int i = 0; i < answers.Length; i++)
+        catchAnswerPlayer();
+        for (int i = 0; i < answers.Length; i++)
         {
             if (answerPlayer.Equals(answers[i].getAnswer()))
             {

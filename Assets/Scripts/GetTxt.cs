@@ -2,38 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
-
-
-public class Answer
-{
-    private string answer;
-    private string[] chars;
-
-    public Answer(string word)
-    {
-        this.answer = word;
-        List<string> temp = new List<string>();
-        for (int i = 0; i < word.Length; i++)
-        {
-            temp.Add(word[i].ToString());
-        }
-        this.chars = temp.ToArray();
-    }
-
-    public string getAnswer()
-    {
-        return answer;
-    }
-
-    public string[] getChars()
-    {
-        return chars;
-    }
-}
+using Assets.Scripts;
 
 public class GetTxt : MonoBehaviour {
 
     public static GetTxt Instance;
+    private string path = "";
+    private string indexPath = "Assets/Scripts/FileText/";
 
     private void Awake()
     {
@@ -50,6 +25,16 @@ public class GetTxt : MonoBehaviour {
 		
 	}
 
+    public string getPath()
+    {
+        return path;
+    }
+
+    public void setLevel(int level)
+    {
+        path = indexPath + "Level" + level + ".txt";
+    }
+
     public string[] getWord()
     {
         List<string> words = new List<string>();
@@ -63,7 +48,7 @@ public class GetTxt : MonoBehaviour {
         return words.ToArray();
     }
 
-    public Answer[] getAnswer()
+    public Answer[] getAnswers()
     {
         List<Answer> answers = new List<Answer>();
         List<string> answerWords = new List<string>();
@@ -78,8 +63,7 @@ public class GetTxt : MonoBehaviour {
     // đọc file txt lên...
     public List<string> ReadString()
     {
-        string path = "Assets/Scripts/Level1.txt";
-
+        //string path = "Assets/Scripts/Level1.txt";
         //Read the text from directly from the test.txt file
         StreamReader reader = new StreamReader(path);
         List<string> lines= new List<string>();
