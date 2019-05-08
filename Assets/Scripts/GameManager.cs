@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour {
 
+    public GameObject stageClearPanel;
+    public Text levelText;
     public List<GameObject> SelectedWordBoxes;
     public List<LineEmptyBoxAnswer> lineEmptyBoxAnswers;
     public Answer[] answers;
@@ -29,6 +31,8 @@ public class GameManager : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+        //Disable stageClearPanel
+        stageClearPanel.SetActive(false);
         //Set level to get text
         GetTxt.Instance.setLevel(currentLevel);
         //Get answer from txt
@@ -65,6 +69,9 @@ public class GameManager : MonoBehaviour {
                 return false;
             }
         }
+        //Show up panel stage clear
+        levelText.text = currentLevel.ToString();
+        stageClearPanel.SetActive(true);
         return true;
     }
 
@@ -129,6 +136,7 @@ public class GameManager : MonoBehaviour {
                 Debug.Log("Checked");
                 return false;
             }
+            
             Debug.Log("Failed");
         }
         return false;

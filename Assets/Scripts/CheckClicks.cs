@@ -99,6 +99,7 @@ public class CheckClicks : MonoBehaviour {
                 {
 
                     Box box = result.gameObject.GetComponent<Box>();
+                    box.clickSelectedAnimation();
                     //If it not contain in SelectedBox in GameManager
                     if (!GameManager.Instance.SelectedWordBoxes.Contains(result.gameObject))
                     {
