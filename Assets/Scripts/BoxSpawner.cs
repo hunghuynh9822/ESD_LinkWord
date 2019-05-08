@@ -35,6 +35,7 @@ public class BoxSpawner : MonoBehaviour {
     void createWordBox()
     {
         string[] words = GetTxt.Instance.getWord();
+        
         //WordBoxCount = words.Length;
         MapPosition mapPosition = MapPosition.getMapWordBoxPosition(words.Length);
         if (mapPosition != null)
@@ -67,6 +68,7 @@ public class BoxSpawner : MonoBehaviour {
     GameObject CreateBox(string word, Vector2 position)
     {
         GameObject gameObject = Instantiate(boxPreference, position, Quaternion.identity) as GameObject;
+
         if (word.Equals(""))
         {
             gameObject.tag = "emptyBox";

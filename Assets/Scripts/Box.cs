@@ -7,6 +7,7 @@ public class Box : MonoBehaviour {
 
     private Text TitleText;
     private Image ImageText;
+    private Animator anim;
 
     public string getWord()
     {
@@ -15,9 +16,22 @@ public class Box : MonoBehaviour {
 
     private void Awake()
     {
+        anim = GetComponent<Animator>();
         TitleText = GetComponentInChildren<Text>();
         ImageText = gameObject.AddComponent<Image>();
         //ImageText.color = WordStyleHolder.Instance.WordStyles[0].Color;
+    }
+
+    public void clickSelectedAnimation()
+    {
+        anim.SetTrigger("Selected");
+
+    }
+
+    public void wrongShakingAnimation()
+    {
+        anim.SetTrigger("WrongSwipe");
+
     }
 
     void ApplyStyleFromHolder(int index, string word)
