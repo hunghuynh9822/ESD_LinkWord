@@ -29,9 +29,14 @@ public class GameManager : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+        //Set level to get text
         GetTxt.Instance.setLevel(currentLevel);
         //Get answer from txt
         answers = GetTxt.Instance.getAnswers();
+        //Set level
+        GameObject levelObject = GameObject.Find("Level");
+        Text levelText = levelObject.GetComponent<Text>();
+        levelText.text = "" + currentLevel;
     }
 	
 	// Update is called once per frame
@@ -95,6 +100,10 @@ public class GameManager : MonoBehaviour {
         GetTxt.Instance.setLevel(currentLevel);
         //Get answer from txt
         answers = GetTxt.Instance.getAnswers();
+        //Set level
+        GameObject levelObject = GameObject.Find("Level");
+        Text levelText = levelObject.GetComponent<Text>();
+        levelText.text = ""+currentLevel;
     }
 
     public bool checkAnswer()

@@ -17,7 +17,7 @@ namespace Assets.Scripts
     {
         public int count;
         public const int distance = 45;
-        public const int yDistance = 145;
+        public const int yDistance = 140;
         public Vector2[] positions;
         public MapPosition(int count, Vector2[] positions)
         {
@@ -75,9 +75,9 @@ namespace Assets.Scripts
                     {
                         return new MapPosition(count, new Vector2[]
                         {
-                            Position.getPosition(-75, -110),
-                            Position.getPosition(0, -30),
-                            Position.getPosition(75, -110)
+                            Position.getPosition(-75, -120),
+                            Position.getPosition(0, -40),
+                            Position.getPosition(75, -120)
                         });
                     }
                 case 4:
