@@ -26,43 +26,96 @@ public class CheckClicks : MonoBehaviour {
     {
         if (Input.touchCount > 0)
         {
-            Touch touch = Input.GetTouch(0);
+            touchSlectWorldBox();
+        }
+        else
+        {
+            clickSlectWorldBox();
+        }
 
-            if (touch.phase == TouchPhase.Moved)
+        //clickSlectWorldBox();
+    }
+
+    void touchSlectWorldBox()
+    {
+        Touch touch = Input.GetTouch(0);
+
+        if (touch.phase == TouchPhase.Moved)
+        {
+            //Set up the new Pointer Event
+            PointerEventData pointerData = new PointerEventData(EventSystem.current);
+            List<RaycastResult> results = new List<RaycastResult>();
+
+            //Raycast using the Graphics Raycaster and mouse click position
+            pointerData.position = Input.mousePosition;
+            this.raycaster.Raycast(pointerData, results);
+
+            //For every result returned, output the name of the GameObject on the Canvas hit by the Ray
+            foreach (RaycastResult result in results)
             {
-                //Set up the new Pointer Event
-                PointerEventData pointerData = new PointerEventData(EventSystem.current);
-                List<RaycastResult> results = new List<RaycastResult>();
-
-                //Raycast using the Graphics Raycaster and mouse click position
-                pointerData.position = Input.mousePosition;
-                this.raycaster.Raycast(pointerData, results);
-
-                //For every result returned, output the name of the GameObject on the Canvas hit by the Ray
-                foreach (RaycastResult result in results)
+                //Check if it is wordBox
+                if (result.gameObject.tag == "wordBox")
                 {
-                    //Check if it is wordBox
-                    if (result.gameObject.tag == "wordBox")
-                    {
-                        Box box = result.gameObject.GetComponent<Box>();
-                        //If it not contain in SelectedBox in GameManager
-                        if (!GameManager.Instance.SelectedWordBoxes.Contains(result.gameObject))
-                        {
-                            GameManager.Instance.SelectedWordBoxes.Add(result.gameObject);
-                            //Connect with previous box
-                            drawLine.setPositonLine(result.gameObject.transform.position);
-                        }
-                    }
 
+                    Box box = result.gameObject.GetComponent<Box>();
+                    //If it not contain in SelectedBox in GameManager
+                    if (!GameManager.Instance.SelectedWordBoxes.Contains(result.gameObject))
+                    {
+                        GameManager.Instance.SelectedWordBoxes.Add(result.gameObject);
+                        //Connect with previous box
+                        drawLine.setPositonLine(result.gameObject.transform.position);
+                    }
                 }
+
             }
-            if (touch.phase == TouchPhase.Ended)
+        }
+        if (touch.phase == TouchPhase.Ended)
+        {
+            GameManager.Instance.checkAnswer();
+            /* Remove Line - Reset SelectedBoxes*/
+            GameManager.Instance.SelectedWordBoxes.Clear();
+            drawLine.resetLine();
+        }
+        
+    }
+
+    public void clickSlectWorldBox()
+    {
+        if (Input.GetMouseButton(0))
+        {
+            //Set up the new Pointer Event
+            PointerEventData pointerData = new PointerEventData(EventSystem.current);
+            List<RaycastResult> results = new List<RaycastResult>();
+
+            //Raycast using the Graphics Raycaster and mouse click position
+            pointerData.position = Input.mousePosition;
+            this.raycaster.Raycast(pointerData, results);
+
+            //For every result returned, output the name of the GameObject on the Canvas hit by the Ray
+            foreach (RaycastResult result in results)
             {
-                GameManager.Instance.checkAnswer();
-                /* Remove Line - Reset SelectedBoxes*/
-                GameManager.Instance.SelectedWordBoxes.Clear();
-                drawLine.resetLine();
+                //Check if it is wordBox
+                if (result.gameObject.tag == "wordBox")
+                {
+
+                    Box box = result.gameObject.GetComponent<Box>();
+                    //If it not contain in SelectedBox in GameManager
+                    if (!GameManager.Instance.SelectedWordBoxes.Contains(result.gameObject))
+                    {
+                        GameManager.Instance.SelectedWordBoxes.Add(result.gameObject);
+                        //Connect with previous box
+                        drawLine.setPositonLine(result.gameObject.transform.position);
+                    }
+                }
+
             }
+        }
+        else if (Input.GetMouseButtonUp(0))
+        {
+            GameManager.Instance.checkAnswer();
+            /* Remove Line - Reset SelectedBoxes*/
+            GameManager.Instance.SelectedWordBoxes.Clear();
+            drawLine.resetLine();
         }
     }
 }

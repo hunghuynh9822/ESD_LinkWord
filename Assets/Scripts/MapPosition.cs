@@ -84,10 +84,10 @@ namespace Assets.Scripts
                     {
                         return new MapPosition(count, new Vector2[]
                         {
-                            Position.getPosition(-60, -20),
-                            Position.getPosition(60, -20),
-                            Position.getPosition(-60, -120),
-                            Position.getPosition(60, -120)
+                            Position.getPosition(-60, -40),
+                            Position.getPosition(60, -40),
+                            Position.getPosition(-60, -140),
+                            Position.getPosition(60, -140)
                         });
                     }
                 default:

@@ -36,16 +36,40 @@ public class DrawLine : MonoBehaviour {
     {
         if (Input.touchCount > 0)
         {
+            drawWithTouch();
+        }
+        else
+        {
+            drawWithMouse();
+        }
+
+        //drawWithMouse();
+    }
+
+    private void drawWithTouch()
+    {
             Touch touch = Input.GetTouch(0);
 
             if (touch.phase == TouchPhase.Moved)
             {
-                if(i != 0) // && i < BoxSpawner.WordBoxCount
+                if (i != 0) // && i < BoxSpawner.WordBoxCount
                 {
                     lineRenderer.SetVertexCount(i + 1);
                     Vector3 mPosition = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10);
                     lineRenderer.SetPosition(i, Camera.main.ScreenToWorldPoint(mPosition));
                 }
+            }
+    }
+
+    private void drawWithMouse()
+    {
+        if (Input.GetMouseButton(0))
+        {
+            if (i != 0) // && i < BoxSpawner.WordBoxCount
+            {
+                lineRenderer.SetVertexCount(i + 1);
+                Vector3 mPosition = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10);
+                lineRenderer.SetPosition(i, Camera.main.ScreenToWorldPoint(mPosition));
             }
         }
     }
