@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour {
 
-    public GameObject stageClearPanel;
+    public GameObject stageClearPanel,gamePanel;
     public Text levelText;
     public List<GameObject> SelectedWordBoxes;
     public List<LineEmptyBoxAnswer> lineEmptyBoxAnswers;
@@ -55,8 +55,11 @@ public class GameManager : MonoBehaviour {
         //}
         if (checkFinishLevel())
         {
-            currentLevel++;
-            resetMap();
+            //currentLevel++;
+            //resetMap();
+            //Show up panel stage clear
+            levelText.text = currentLevel.ToString();
+            stageClearPanel.SetActive(true);
         }
     }
 
@@ -69,10 +72,15 @@ public class GameManager : MonoBehaviour {
                 return false;
             }
         }
-        //Show up panel stage clear
-        levelText.text = currentLevel.ToString();
-        stageClearPanel.SetActive(true);
+        
         return true;
+    }
+
+    public void continueLevel()
+    {
+        currentLevel++;
+        resetMap();
+        stageClearPanel.SetActive(false);
     }
 
     public void catchAnswerPlayer()
@@ -126,7 +134,8 @@ public class GameManager : MonoBehaviour {
                     for (int j = 0; j< gameObjects.Count;j++ )
                     {
                         Box box = gameObjects[j].GetComponent<Box>();
-                        box.ApplyStyle(answers[i].getChars()[j]);
+                        box.correctedLineAnimation();
+                        box.ApplyStyle(answers[i].getChars()[j]);   
                     }
                     lineEmptyBoxAnswers[i].setChecked(true);
                     answerPlayer = "";
@@ -136,7 +145,11 @@ public class GameManager : MonoBehaviour {
                 Debug.Log("Checked");
                 return false;
             }
-            
+            foreach (GameObject go in SelectedWordBoxes)
+            {
+                Box box = go.GetComponent<Box>();
+                box.wrongShakingAnimation();
+            }
             Debug.Log("Failed");
         }
         return false;

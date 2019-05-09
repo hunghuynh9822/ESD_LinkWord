@@ -28,6 +28,10 @@ public class Box : MonoBehaviour {
 
     }
 
+    public void correctedLineAnimation()
+    {
+        anim.SetTrigger("Corrected");
+    }
     public void wrongShakingAnimation()
     {
         anim.SetTrigger("WrongSwipe");
@@ -47,11 +51,11 @@ public class Box : MonoBehaviour {
     {
         if (word != "")
         {
-            ApplyStyleFromHolder(1,word);
+            ApplyStyleFromHolder(1, word);
         }
         else
         {
-            ApplyStyleFromHolder(0,word);
+            ApplyStyleFromHolder(0, word);
         }
     }
 
@@ -62,6 +66,6 @@ public class Box : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
-	}
+        
+    }
 }
