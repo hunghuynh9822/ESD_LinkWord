@@ -16,8 +16,8 @@ namespace Assets.Scripts
     public class MapPosition
     {
         public int count;
-        public const int distance = 45;
-        public const int yDistance = 140;
+        public const int distance = 90;
+        public const int yDistance = 285;
         public Vector2[] positions;
         public MapPosition(int count, Vector2[] positions)
         {
@@ -32,27 +32,27 @@ namespace Assets.Scripts
                     {
                         return new MapPosition(count, new Vector2[]
                         {
-                            Position.getPosition(-30,yDistance - distance*index),
-                            Position.getPosition(30,yDistance - distance*index)
+                            Position.getPosition(-50,yDistance - distance*index),
+                            Position.getPosition(50,yDistance - distance*index)
                         });
                     }
                 case 3:
                     {
                         return new MapPosition(count, new Vector2[]
                         {
-                            Position.getPosition(-50, yDistance - distance*index),
+                            Position.getPosition(-90, yDistance - distance*index),
                             Position.getPosition(0, yDistance - distance*index),
-                            Position.getPosition(50, yDistance - distance*index)
+                            Position.getPosition(90, yDistance - distance*index)
                         });
                     }
                 case 4:
                     {
                         return new MapPosition(count, new Vector2[]
                         {
-                            Position.getPosition(-75, yDistance - distance*index),
-                            Position.getPosition(-25, yDistance - distance*index),
-                            Position.getPosition(25, yDistance - distance*index),
-                            Position.getPosition(75, yDistance - distance*index)
+                            Position.getPosition(-140, yDistance - distance*index),
+                            Position.getPosition(-45, yDistance - distance*index),
+                            Position.getPosition(45, yDistance - distance*index),
+                            Position.getPosition(140, yDistance - distance*index)
                         });
                     }
                 default:
@@ -67,27 +67,27 @@ namespace Assets.Scripts
                     {
                         return new MapPosition(count, new Vector2[]
                         {
-                            Position.getPosition(-60,-80),
-                            Position.getPosition(60,-80)
+                            Position.getPosition(-130,-180),
+                            Position.getPosition(130,-180)
                         });
                     }
                 case 3:
                     {
                         return new MapPosition(count, new Vector2[]
                         {
-                            Position.getPosition(-75, -120),
-                            Position.getPosition(0, -40),
-                            Position.getPosition(75, -120)
+                            Position.getPosition(-135, -245),
+                            Position.getPosition(0, -90),
+                            Position.getPosition(135, -245)
                         });
                     }
                 case 4:
                     {
                         return new MapPosition(count, new Vector2[]
                         {
-                            Position.getPosition(-60, -40),
-                            Position.getPosition(60, -40),
-                            Position.getPosition(-60, -140),
-                            Position.getPosition(60, -140)
+                            Position.getPosition(-130, -105),
+                            Position.getPosition(130, -105),
+                            Position.getPosition(-130, -265),
+                            Position.getPosition(130, -265)
                         });
                     }
                 default:
