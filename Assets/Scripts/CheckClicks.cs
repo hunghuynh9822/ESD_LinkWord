@@ -56,7 +56,6 @@ public class CheckClicks : MonoBehaviour {
                 //Check if it is wordBox
                 if (result.gameObject.tag == "wordBox")
                 {
-
                     Box box = result.gameObject.GetComponent<Box>();
                     //If it not contain in SelectedBox in GameManager
                     if (!GameManager.Instance.SelectedWordBoxes.Contains(result.gameObject))
@@ -64,6 +63,14 @@ public class CheckClicks : MonoBehaviour {
                         GameManager.Instance.SelectedWordBoxes.Add(result.gameObject);
                         //Connect with previous box
                         drawLine.setPositonLine(result.gameObject.transform.position);
+                    }
+                    else
+                    {
+                        if (GameManager.Instance.SelectedWordBoxes.IndexOf(result.gameObject) == GameManager.Instance.SelectedWordBoxes.Count - 2)
+                        {
+                            GameManager.Instance.SelectedWordBoxes.RemoveAt(GameManager.Instance.SelectedWordBoxes.Count - 1);
+                            drawLine.drawBack();
+                        }
                     }
                 }
 
@@ -106,6 +113,14 @@ public class CheckClicks : MonoBehaviour {
                         GameManager.Instance.SelectedWordBoxes.Add(result.gameObject);
                         //Connect with previous box
                         drawLine.setPositonLine(result.gameObject.transform.position);
+                    }
+                    else
+                    {
+                        if (GameManager.Instance.SelectedWordBoxes.IndexOf(result.gameObject) == GameManager.Instance.SelectedWordBoxes.Count - 2)
+                        {
+                            GameManager.Instance.SelectedWordBoxes.RemoveAt(GameManager.Instance.SelectedWordBoxes.Count - 1);
+                            drawLine.drawBack();
+                        }
                     }
                 }
 

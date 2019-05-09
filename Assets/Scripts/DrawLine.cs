@@ -27,7 +27,7 @@ public class DrawLine : MonoBehaviour {
         lineRenderer = lineGO.GetComponent<LineRenderer>();
         lineRenderer.material = new Material(Shader.Find("Mobile/Particles/Additive"));
         lineRenderer.SetColors(c1, c2);
-        lineRenderer.SetWidth(10F, 10F);
+        lineRenderer.SetWidth(15F, 15F);
         lineRenderer.SetVertexCount(0);
         lineRenderer.useWorldSpace = false;
     }
@@ -72,6 +72,12 @@ public class DrawLine : MonoBehaviour {
                 lineRenderer.SetPosition(i, Camera.main.ScreenToWorldPoint(mPosition));
             }
         }
+    }
+
+    public void drawBack()
+    {
+        lineRenderer.SetVertexCount(i - 1);
+        i--;
     }
 
     public void setPositonLine(Vector2 position)
