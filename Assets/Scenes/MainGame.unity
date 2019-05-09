@@ -123,13 +123,14 @@ GameObject:
   - component: {fileID: 149094918}
   - component: {fileID: 149094920}
   - component: {fileID: 149094919}
-  m_Layer: 5
+  - component: {fileID: 149094921}
+  m_Layer: 0
   m_Name: StageClearPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &149094918
 RectTransform:
   m_ObjectHideFlags: 0
@@ -163,7 +164,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.027450982, g: 0.003921569, b: 0, a: 0.69411767}
+  m_Color: {r: 0.027450982, g: 0.003921569, b: 0, a: 0.7058824}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -185,6 +186,24 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 149094917}
   m_CullTransparentMesh: 0
+--- !u!95 &149094921
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 149094917}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 144cfa8347a60b346af5a47aa5133bcb, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &246281175
 GameObject:
   m_ObjectHideFlags: 0
@@ -484,7 +503,7 @@ GameObject:
   - component: {fileID: 551190758}
   - component: {fileID: 551190760}
   - component: {fileID: 551190759}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: LevelLabelText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -530,10 +549,10 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 21ff51bc48b29ca48a128e71f5342bed, type: 3}
-    m_FontSize: 14
-    m_FontStyle: 0
+    m_FontSize: 20
+    m_FontStyle: 1
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 2
     m_MaxSize: 40
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -566,7 +585,7 @@ GameObject:
   - component: {fileID: 582332669}
   - component: {fileID: 582332661}
   - component: {fileID: 582332665}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -714,6 +733,7 @@ MonoBehaviour:
   levelText: {fileID: 1069769186}
   SelectedWordBoxes: []
   answerPlayer: 
+  anim: {fileID: 149094921}
 --- !u!114 &582332669
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -824,7 +844,7 @@ GameObject:
   - component: {fileID: 838017035}
   - component: {fileID: 838017037}
   - component: {fileID: 838017036}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Level
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -899,7 +919,7 @@ GameObject:
   - component: {fileID: 963107713}
   - component: {fileID: 963107715}
   - component: {fileID: 963107714}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -973,7 +993,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1019791134}
   - component: {fileID: 1019791135}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Backgroud
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1061,7 +1081,7 @@ GameObject:
   - component: {fileID: 1069769188}
   - component: {fileID: 1069769187}
   - component: {fileID: 1069769186}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: LevelText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1137,7 +1157,7 @@ GameObject:
   - component: {fileID: 1153370021}
   - component: {fileID: 1153370020}
   - component: {fileID: 1153370019}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1160,7 +1180,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.13800001, y: 0.07466299}
   m_AnchorMax: {x: 0.85654175, y: 0.15200001}
-  m_AnchoredPosition: {x: 0.30339813, y: -1}
+  m_AnchoredPosition: {x: 0.30340576, y: -1}
   m_SizeDelta: {x: -1, y: 2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1153370019
@@ -1259,7 +1279,7 @@ GameObject:
   - component: {fileID: 1179599636}
   - component: {fileID: 1179599638}
   - component: {fileID: 1179599637}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1479,7 +1499,7 @@ GameObject:
   - component: {fileID: 1703518835}
   - component: {fileID: 1703518837}
   - component: {fileID: 1703518836}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}

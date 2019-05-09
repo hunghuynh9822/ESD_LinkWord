@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour {
     public Answer[] answers;
     public string answerPlayer;
 
+    public Animator anim;
+
     public static int currentLevel = 0;
 
     public static GameManager Instance;
@@ -60,6 +62,7 @@ public class GameManager : MonoBehaviour {
             //Show up panel stage clear
             levelText.text = currentLevel.ToString();
             stageClearPanel.SetActive(true);
+            anim.SetTrigger("StageClear");
         }
     }
 
@@ -130,12 +133,11 @@ public class GameManager : MonoBehaviour {
             {
                 if (!lineEmptyBoxAnswers[i].getChecked())
                 {
-                    List<GameObject> gameObjects = lineEmptyBoxAnswers[i].getGameObjects();
-                    for (int j = 0; j< gameObjects.Count;j++ )
+                    List<Box> boxes = lineEmptyBoxAnswers[i].getGameObjects();
+                    for (int j = 0; j< boxes.Count;j++ )
                     {
-                        Box box = gameObjects[j].GetComponent<Box>();
-                        box.correctedLineAnimation();
-                        box.ApplyStyle(answers[i].getChars()[j]);   
+                        boxes[j].ApplyStyle(answers[i].getChars()[j]);
+                        //boxes[j].clickSelectedAnimation();
                     }
                     lineEmptyBoxAnswers[i].setChecked(true);
                     answerPlayer = "";

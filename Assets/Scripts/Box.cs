@@ -9,11 +9,6 @@ public class Box : MonoBehaviour {
     private Image ImageText;
     private Animator anim;
 
-    public string getWord()
-    {
-        return TitleText.text;
-    }
-
     private void Awake()
     {
         anim = GetComponent<Animator>();
@@ -28,10 +23,6 @@ public class Box : MonoBehaviour {
 
     }
 
-    public void correctedLineAnimation()
-    {
-        anim.SetTrigger("Corrected");
-    }
     public void wrongShakingAnimation()
     {
         anim.SetTrigger("WrongSwipe");
@@ -52,6 +43,7 @@ public class Box : MonoBehaviour {
         if (word != "")
         {
             ApplyStyleFromHolder(1, word);
+            clickSelectedAnimation();
         }
         else
         {

@@ -56,7 +56,7 @@ public class BoxSpawner : MonoBehaviour {
             MapPosition mapPositionEmptyBox = MapPosition.getMapEmptyBoxPosition(chars.Length, i);
             if (mapPositionEmptyBox != null)
             {
-                List<GameObject> emptyBoxes = new List<GameObject>();
+                List<Box> emptyBoxes = new List<Box>();
                 for (int j = 0; j < chars.Length; j++)
                 {
                     emptyBoxes.Add(CreateBox("", mapPositionEmptyBox.positions[j]));
@@ -65,7 +65,7 @@ public class BoxSpawner : MonoBehaviour {
             }
         }
     }
-    GameObject CreateBox(string word, Vector2 position)
+    Box CreateBox(string word, Vector2 position)
     {
         GameObject gameObject = Instantiate(boxPreference, position, Quaternion.identity) as GameObject;
 
@@ -80,6 +80,6 @@ public class BoxSpawner : MonoBehaviour {
         Box box = gameObject.GetComponent<Box>();
         box.ApplyStyle(word);
         gameObject.transform.SetParent(panel.transform, false);
-        return gameObject;
+        return gameObject.GetComponent<Box>();
     }
 }

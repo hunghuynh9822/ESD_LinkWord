@@ -9,15 +9,15 @@ namespace Assets.Scripts
     public class LineEmptyBoxAnswer
     {
         private int index;
-        private List<GameObject> gameObjects;
+        private List<Box> boxes;
         private int count;
         private bool isChecked;
 
-        public LineEmptyBoxAnswer(int index, List<GameObject> gameObjects)
+        public LineEmptyBoxAnswer(int index, List<Box> boxes)
         {
             this.index = index;
-            this.gameObjects = gameObjects;
-            this.count = gameObjects.Count;
+            this.boxes = boxes;
+            this.count = boxes.Count;
             this.isChecked = false;
         }
 
@@ -26,9 +26,9 @@ namespace Assets.Scripts
         //    return this.count == count;
         //}
 
-        public List<GameObject> getGameObjects()
+        public List<Box> getGameObjects()
         {
-            return this.gameObjects;
+            return this.boxes;
         }
 
         public bool getChecked()
